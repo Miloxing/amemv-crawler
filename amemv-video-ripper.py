@@ -458,7 +458,7 @@ def parse_sites(fileName):
 noFavorite = False
 
 if __name__ == "__main__":
-    content, opts, args = None, None, []
+    content, opts, args = [], None, []
 
     try:
         if len(sys.argv) >= 2:
@@ -469,9 +469,11 @@ if __name__ == "__main__":
 
     if not args:
         # check the sites file
-        filename = "share-url.txt"
+        filename = "/root/u/dyuid.txt"
         if os.path.exists(filename):
-            content = parse_sites(filename)
+            for i in open("dyuid.txt","r").read().splitlines():
+                url= 'https://www.iesdouyin.com/share/user/'+i
+                content.append(url)
         else:
             usage()
             sys.exit(1)
