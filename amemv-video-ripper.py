@@ -140,7 +140,7 @@ class CrawlerScheduler(object):
 
     @staticmethod
     def generateSignature(value):
-        p = os.popen('node fuck-byted-acrawler.js %s' % value)
+        p = os.popen('nodejs fuck-byted-acrawler.js %s' % value)
         return p.readlines()[0]
 
     @staticmethod
@@ -455,7 +455,7 @@ def parse_sites(fileName):
     return numbers
 
 
-noFavorite = False
+noFavorite = True
 
 if __name__ == "__main__":
     content, opts, args = [], None, []
@@ -471,7 +471,7 @@ if __name__ == "__main__":
         # check the sites file
         filename = "/root/u/dyuid.txt"
         if os.path.exists(filename):
-            for i in open("dyuid.txt","r").read().splitlines():
+            for i in open("/root/u/dyuid.txt","r").read().splitlines():
                 url= 'https://www.iesdouyin.com/share/user/'+i
                 content.append(url)
         else:
